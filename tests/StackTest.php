@@ -42,6 +42,6 @@ class StackTest extends TestCase
         $this->assertEquals($banker->getEmail(), "bill@yahoo.de");
         $this->assertEquals($banker->getCompany(), "SSK Muenchen");
 
-        echo "hello-3";echo "\n";
+        echo "hello-3"; echo "\n";
     }
 }

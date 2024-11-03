@@ -23,7 +23,7 @@ class Printer
 
     public function printAllOnConsole(){
         foreach($this->printAbles as $item){
-            $item->printMySelfOnConsole();
+            $item->printMySelfOnConsole(); echo "\n";
         }
     }
 }
