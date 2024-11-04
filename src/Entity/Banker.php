@@ -34,7 +34,7 @@ class Banker extends Person implements PrintAble
         echo $this->name;echo "\n";
         echo $this->age;echo "\n";
         echo $this->email;echo "\n";
-        echo $this->company;echo "\n";echo "\n";
+        echo $this->company;echo "\n";
     }
 
 }
