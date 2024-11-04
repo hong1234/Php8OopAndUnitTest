@@ -1,6 +1,6 @@
 <?php
-require_once 'error_exception_handler.php';
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../error_exception_handler.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Demo\Entity\Student;
 use Demo\Entity\Banker;

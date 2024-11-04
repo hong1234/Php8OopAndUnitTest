@@ -5,7 +5,11 @@ use Demo\Entity\PrintAble;
 
 class Printer
 {
-    public $printAbles = array();
+    public $printAbles;
+
+    public function __construct(array $options = []){
+        $this->printAbles = $options;
+    }
 
     public function add(PrintAble $item){
         $this->printAbles[] = $item;
@@ -23,7 +27,7 @@ class Printer
 
     public function printAllOnConsole(){
         foreach($this->printAbles as $item){
-            $item->printMySelfOnConsole();
+            $item->printMySelfOnConsole(); echo "\n";
         }
     }
 }
