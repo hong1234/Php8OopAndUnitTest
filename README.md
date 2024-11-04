@@ -15,6 +15,8 @@ php ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests
 
 php app_add_user.php
 
+php app_show_users.php
+
 php app_console.php
 
 php app_console_sym6.php app:show-list

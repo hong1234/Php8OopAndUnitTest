@@ -12,8 +12,8 @@ class UserService {
         $this->userDao = $userDao;
     }
 
-    public function addUser($username, $useremail, $password) {
-        $userArr = $this->userDao->toArray(new User($username, $useremail, $password));
+    public function addUser(User $user) {
+        $userArr = $this->userDao->toArray($user);
         return $this->userDao->insert($userArr);
     }
 }

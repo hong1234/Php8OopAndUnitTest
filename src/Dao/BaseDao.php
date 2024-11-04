@@ -7,7 +7,7 @@ abstract class BaseDao {
     protected final function getDb(){
         try {
             $db = new PDO(
-                'mysql:host=127.0.0.1:3306;dbname=hongtest', //connect
+                'mysql:host=127.0.0.1:3306;dbname=hongtest77', //connect
                 'root',     //user
                 'Vuanh--66' //password
             );

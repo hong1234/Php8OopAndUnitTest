@@ -1,7 +1,7 @@
 <?php
 namespace Demo\Entity;
 
-class User {
+class User implements PrintAble {
 
     public $name;
     private $email;
@@ -35,6 +35,18 @@ class User {
 
     function setPassword($password){
         $this->password = $password;
+    }
+
+    public function printMySelf(){
+        echo '<b>I am a User</b>'.'<br/>';
+        echo $this->name.'<br/>';
+        echo $this->email.'<br/>';
+    }
+
+    public function printMySelfOnConsole(){
+        echo 'I am a User ---';echo "\n";
+        echo $this->name;echo "\n";
+        echo $this->email;echo "\n";
     }
 
 }

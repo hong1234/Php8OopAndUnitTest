@@ -5,7 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Demo\Entity\Student;
 use Demo\Entity\Banker;
 use Demo\Service\Printer;
-use Demo\Exception\MyException;
+use Demo\Exception\MyException; 
 
 try {
     // EXCEPTION
@@ -28,7 +28,7 @@ try {
     //throw $e;
 }
 
-$pr = new Printer();
+$pr = new Printer([]);
 $pr->add(new Student('Anna4', 33, 'anna@yahoo.de', 'Uni Muen'));
 $pr->add(new Banker('Bill4', 44, 'bill@yahoo.de', 'SSK Muenchen'));
 echo "\n";

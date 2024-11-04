@@ -11,10 +11,10 @@ class UserDao extends BaseDao {
         $this->db = $this->getDb();
     }
 
-    public function insert(array $values){
-
+    public function insert(User $user): bool {
+        $values = $this->toArray($user); // array
         $fields = array_keys($values);
-        $vals = array_values($values);
+        $vals   = array_values($values);
 
         $arr = array();
         foreach ($fields as $f) {
@@ -31,27 +31,42 @@ class UserDao extends BaseDao {
             $statement->bindValue($i+1, $v);
         }
         
-        return $statement->execute(); 
+        return $statement->execute();
     }
 
     public function searchByEmail($useremail){
         $statement = $this->db->prepare("SELECT * FROM users WHERE useremail LIKE :useremail");
         $statement->bindValue(':useremail', '%'.$useremail.'%');
         $statement->execute(); 
-        
-        return $statement->fetchAll();
+        $users = $statement->fetchAll();
+        $temp = array();
+        foreach ($users as $user) {
+            $temp[] = $this->toObject($user['username'], $user['useremail']);
+        }
+        return $temp;
     }
 
-    public function getUsers(){
-        return $this->db->query("SELECT id, username, useremail FROM users")->fetchAll();
+    public function getUsers() {
+        $users = $this->db->query("SELECT id, username, useremail FROM users")->fetchAll();
+        $temp = array();
+        foreach ($users as $user) {
+            // $user['id'];
+            $temp[] = $this->toObject($user['username'], $user['useremail']);
+        }
+        return $temp;
     }
 
-    public function toArray(User $user){
+    public function toArray(User $user) {
         $temp = array();
         $temp['username'] = $user->getName();
         $temp['useremail'] = $user->getEmail();
         $temp['password'] = md5($user->getPassword());
         $temp['timestamp'] = time();
         return $temp;
+    }
+
+    public function toObject($username, $useremail): User {
+        $user = new User($username, $useremail, "");
+        return $user;
     }
 }
